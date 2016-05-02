@@ -22,6 +22,7 @@ public class population {
 	PlaylistID=3&NumPlayers=11192 (Normal Standard)
 	PlaylistID=15&NumPlayers=979 (Snow Day)
 	PlaylistID=11&NumPlayers=17540 (Ranked Doubles)
+	PlaylistID=17&NumPlayers=xxxx (Hoops) - Basketball
 	
 	PlaylistID=0&NumPlayers=39953 (Lobby)
 	PlaylistID=1&NumPlayers=862 (Normal Duel)
@@ -37,6 +38,7 @@ public class population {
 	PlaylistID=13&NumPlayers=9531 (Ranked Standard)
 	PlaylistID=15&NumPlayers=1006 (Snow Day)
 	PlaylistID=16&NumPlayers=2133 (Rocket Labs)
+	PlaylistID=17&NumPlayers=xxxx (Hoops) - Basketball
 	PlaylistID=-2&NumPlayers=4486 (Currently waiting for a game)
 	PlaylistID=8&NumPlayers=4858 (Exhibition)
 	*/

@@ -10,6 +10,10 @@ import javax.net.ssl.HttpsURLConnection;
 
 import util.connectionhandler;
 
+/**
+ * @author tom_h
+ *
+ */
 public class callproc105 {
 		
 		public callproc105() throws Exception {
@@ -17,7 +21,7 @@ public class callproc105 {
 				//connectionhandler test
 				//String payload = "&Proc[]=GetGameServerPingList";
 				//connectionhandler.chcallproc(payload);
-			getGameServers();
+			//getGameServers();
 		}
 		
 		/*
@@ -27,7 +31,7 @@ public class callproc105 {
 		 */
 				
 		// Game Server
-		private void getGameServers() throws Exception {
+		public void getGameServers() throws Exception {
 			
 			String payload = "&Proc[]=GetGameServerPingList"; 
 			
@@ -37,7 +41,11 @@ public class callproc105 {
 		
 		// Player Skill
 		// for steam
-		private void getPlayerSkillForSteam(String UserID) throws Exception {
+		/**
+		 * @param UserID
+		 * @throws Exception
+		 */
+		public void getPlayerSkillForSteam(String UserID) throws Exception {
 			
 			//String UserID = "";
 			
@@ -49,7 +57,7 @@ public class callproc105 {
 		
 		// Player Skill
 		// for ps4
-		private void getPlayerSkillForPS4(String UserName) throws Exception {
+		public void getPlayerSkillForPS4(String UserName) throws Exception {
 			
 			//String UserName = "";
 			
@@ -63,7 +71,7 @@ public class callproc105 {
 		// use this to request PlayerSkill for multiple Users 
 		// use case: queue skill check
 		// this will reduce number of packages sent
-		private void getPlayerSkillBulk(String[] UserIDs) throws Exception {
+		public void getPlayerSkillBulk(String[] UserIDs) throws Exception {
 			
 			//to ignore error
 			int i = 0;
@@ -82,7 +90,7 @@ public class callproc105 {
 		
 		// Player Titles
 		// extend this method. there is only response if there are titles otherwise nothing.
-		private void getPlayerTitles(String UserID) throws Exception {
+		public void getPlayerTitles(String UserID) throws Exception {
 			
 			//for Steam
 			String payload = "&Proc[]=GetPlayerTitlesSteam&P0P[]=" + UserID;
@@ -92,7 +100,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getPlayerTitles(String[] UserIDs) throws Exception {
+		public void getPlayerTitles(String[] UserIDs) throws Exception {
 			
 			//for Steam
 			int i = 0;
@@ -102,12 +110,13 @@ public class callproc105 {
 			String proc = "&Proc[]=GetPlayerTitlesSteam";
 			String template = proc + "&P" + z + "P[]=" + UserIDs[i];
 			
-			connectionhandler.chcallproc(payload);
+			//connectionhandler.chcallproc(payload);
+			connectionhandler.chcallproc(template);
 			
 		}
 		
 		// get seasonal playlists
-		private void getSeasonalPlaylists() throws Exception {
+		public void getSeasonalPlaylists() throws Exception {
 			
 			String payload = "&Proc[]=GetSeasonalPlaylists"; // get all featured (or time limited) playlists/queues
 			
@@ -117,7 +126,7 @@ public class callproc105 {
 		
 		// get all (available?) dlcs
 		// for steam
-		private void getAvailableDLCs() throws Exception {
+		public void getAvailableDLCs() throws Exception {
 			
 			//for Steam
 			String payload = "&Proc[]=GetDLCSteam";
@@ -128,7 +137,7 @@ public class callproc105 {
 		
 		// get all (available?) dlcs
 		// for ps4
-		private void getAvailableDLCsForPS4() throws Exception {
+		public void getAvailableDLCsForPS4() throws Exception {
 			
 			//for ps4
 			String payload = "&Proc[]=GetDLCPS4";
@@ -138,7 +147,7 @@ public class callproc105 {
 		}
 		
 		// get Status infos e.g. if ranked is enabled
-		private void getGenericDataStatus() throws Exception {
+		public void getGenericDataStatus() throws Exception {
 			
 			String payload = "&Proc[]=GetGenericDataAll";
 			
@@ -148,7 +157,7 @@ public class callproc105 {
 		
 		// dunno what you can do with that information
 		// maybe for steam/ps4 v xboxone
-		private void getRegionList() throws Exception {
+		public void getRegionList() throws Exception {
 			
 			String payload = "&Proc[]=GetRegionListForPlatform&P0P[]=INTv2";
 			
@@ -157,7 +166,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getSkillLeaderboard(String PlaylistID) throws Exception {
+		public void getSkillLeaderboard(String PlaylistID) throws Exception {
 			
 			//leaderboard for one playlist
 			
@@ -168,7 +177,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getSkillLeaderboard(String[] PlaylistIDs) throws Exception {
+		public void getSkillLeaderboard(String[] PlaylistIDs) throws Exception {
 			
 			//leaderboard for all playlists
 			
@@ -181,7 +190,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getSkillLeaderboardForUser(String UserID, String PlaylistID) throws Exception {
+		public void getSkillLeaderboardForUser(String UserID, String PlaylistID) throws Exception {
 			
 			//one user in one playlist
 			
@@ -196,7 +205,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getSkillLeaderboardForUser(String UserID, String[] PlaylistIDs) throws Exception {
+		public void getSkillLeaderboardForUser(String UserID, String[] PlaylistIDs) throws Exception {
 			
 			//one use in all playlists
 			
@@ -214,7 +223,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getSkillLeaderboardForUserBulk(String[] UserIDs, String[] PlaylistIDs) throws Exception {
+		public void getSkillLeaderboardForUserBulk(String[] UserIDs, String[] PlaylistIDs) throws Exception {
 			
 			//multiple users in all playlists
 			
@@ -232,7 +241,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getLeaderboardTopWins() throws Exception {
+		public void getLeaderboardTopWins() throws Exception {
 			
 			//100 is standard. returns 200 results. 100 of each platform ps4/steam
 			String payload = "&Proc[]=GetLeaderboard&P0P[]=Wins&P0P[]=100";
@@ -242,7 +251,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getLeaderboardTopWins(String z) throws Exception {
+		public void getLeaderboardTopWins(String z) throws Exception {
 			
 			//returns double the amount of z. z is for each platform ps4/steam
 			//max z = 500
@@ -253,7 +262,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getLeaderboardTopGoals() throws Exception {
+		public void getLeaderboardTopGoals() throws Exception {
 			
 			//100 is standard. returns 200 results. 100 of each platform ps4/steam
 			String payload = "&Proc[]=GetLeaderboard&P0P[]=Goals&P0P[]=100";
@@ -263,7 +272,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getLeaderboardTopGoals(String z) throws Exception {
+		public void getLeaderboardTopGoals(String z) throws Exception {
 			
 			//returns double the amount of z. z is for each platform ps4/steam
 			//max z = 500
@@ -274,7 +283,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getLeaderboardTopMVPs() throws Exception {
+		public void getLeaderboardTopMVPs() throws Exception {
 			
 			//100 is standard. returns 200 results. 100 of each platform ps4/steam
 			String payload = "&Proc[]=GetLeaderboard&P0P[]=MVPs&P0P[]=100";
@@ -284,7 +293,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getLeaderboardTopMVPs(String z) throws Exception {
+		public void getLeaderboardTopMVPs(String z) throws Exception {
 			
 			//returns double the amount of z. z is for each platform ps4/steam
 			//max z = 500
@@ -295,7 +304,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getLeaderboardTopSaves() throws Exception {
+		public void getLeaderboardTopSaves() throws Exception {
 			
 			//100 is standard. returns 200 results. 100 of each platform ps4/steam
 			String payload = "&Proc[]=GetLeaderboard&P0P[]=Saves&P0P[]=100";
@@ -305,7 +314,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getLeaderboardTopSaves(String z) throws Exception {
+		public void getLeaderboardTopSaves(String z) throws Exception {
 			
 			//returns double the amount of z. z is for each platform ps4/steam
 			//max z = 500
@@ -316,7 +325,7 @@ public class callproc105 {
 		}		
 		
 		//
-		private void getLeaderboardTopShots() throws Exception {
+		public void getLeaderboardTopShots() throws Exception {
 			
 			//100 is standard. returns 200 results. 100 of each platform ps4/steam
 			String payload = "&Proc[]=GetLeaderboard&P0P[]=Shots&P0P[]=100";
@@ -326,7 +335,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getLeaderboardTopShots(String z) throws Exception {
+		public void getLeaderboardTopShots(String z) throws Exception {
 			
 			//returns double the amount of z. z is for each platform ps4/steam
 			//max z = 500
@@ -337,7 +346,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getLeaderboardTopAssists() throws Exception {
+		public void getLeaderboardTopAssists() throws Exception {
 			
 			//100 is standard. returns 200 results. 100 of each platform ps4/steam
 			String payload = "&Proc[]=GetLeaderboard&P0P[]=Assists&P0P[]=100";
@@ -347,7 +356,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getLeaderboardTopAssists(String z) throws Exception {
+		public void getLeaderboardTopAssists(String z) throws Exception {
 			
 			//returns double the amount of z. z is for each platform ps4/steam
 			//max z = 500
@@ -358,7 +367,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getWins(String UserID) throws Exception {
+		public void getWins(String UserID) throws Exception {
 			
 			//for steam
 			String payload = "&Proc[]=GetLeaderboardValueForUserSteam&P0P[]=" + UserID + "&P0P[]=Wins";
@@ -368,7 +377,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getGoals(String UserID) throws Exception {
+		public void getGoals(String UserID) throws Exception {
 			
 			//for steam
 			String payload = "&Proc[]=GetLeaderboardValueForUserSteam&P0P[]=" + UserID + "&P0P[]=Goals";
@@ -378,7 +387,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getMVPs(String UserID) throws Exception {
+		public void getMVPs(String UserID) throws Exception {
 			
 			//for steam
 			String payload = "&Proc[]=GetLeaderboardValueForUserSteam&P0P[]=" + UserID + "&P0P[]=MVPs";
@@ -388,7 +397,7 @@ public class callproc105 {
 		}	
 		
 		//
-		private void getSaves(String UserID) throws Exception {
+		public void getSaves(String UserID) throws Exception {
 			
 			//for steam
 			String payload = "&Proc[]=GetLeaderboardValueForUserSteam&P0P[]=" + UserID + "&P0P[]=Saves";
@@ -398,7 +407,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getShots(String UserID) throws Exception {
+		public void getShots(String UserID) throws Exception {
 			
 			//for steam
 			String payload = "&Proc[]=GetLeaderboardValueForUserSteam&P0P[]=" + UserID + "&P0P[]=Shots";
@@ -408,7 +417,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void getAssists(String UserID) throws Exception {
+		public void getAssists(String UserID) throws Exception {
 			
 			//for steam
 			String payload = "&Proc[]=GetLeaderboardValueForUserSteam&P0P[]=" + UserID + "&P0P[]=Assists";
@@ -418,7 +427,7 @@ public class callproc105 {
 		}
 		
 		//
-		private void w00t() throws Exception {
+		public void w00t() throws Exception {
 			
 			String payload = "&Proc[]=GetSkillLeaderboard_v2&P0P[]=10&Proc[]=GetSkillLeaderboardValueForUser_v2Steam&P1P[]=76561198011004815&P1P[]=10";
 			
