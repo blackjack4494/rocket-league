@@ -7,8 +7,6 @@ import java.io.FileReader;
 
 public class sidhandler {
 
-	private static String sid = "";
-
 	private static boolean file_exists = false;
 	private static boolean file_not_empty = false;
 	private static boolean file_length_32bytes = false;
@@ -16,13 +14,14 @@ public class sidhandler {
 
 	static File file = new File("sid.txt");
 
-	// TODO: - change return type
+	// TODO: - none
 	//
 	//
 	/**
+	 * @return
 	 * @throws Exception
 	 */
-	public static void checkSIDFile() throws Exception {
+	public static boolean checkSIDFile() throws Exception {
 
 		if (file.exists() && !file.isDirectory()) {
 			file_exists = true;
@@ -32,52 +31,59 @@ public class sidhandler {
 		if (file_exists) {
 			file_not_empty = file.length() != 0;
 		}
-		if(file_not_empty){
+		if (file_not_empty) {
 			file_length_32bytes = file.length() == 32;
 		}
-		if(file_length_32bytes){
+		if (file_length_32bytes) {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			String str = br.readLine();
 			br.close();
 			file_matches_pattern = str.matches("[a-f0-9]+");
 		}
-		
-		//DEBUGGING
+		// debugging_checkSIDFile();
+		return file_matches_pattern;
+
+	}
+
+	/**
+	 * 
+	 */
+	public static void debugging_checkSIDFile() {
+		// DEBUGGING
 		if (file_not_empty) {
 			System.out.println("File check successful!");
 		} else {
 			System.out.println("File check failed!");
 		}
-		if(file_length_32bytes){
+		if (file_length_32bytes) {
 			System.out.println("File probably contains SID");
 		} else {
 			System.out.println("File length is not correct!");
 		}
-		if(file_matches_pattern){
+		if (file_matches_pattern) {
 			System.out.println("File content is matching pattern");
 		} else {
 			System.out.println("File content is not matching pattern!");
 		}
-		
-
 	}
 
-	// TODO: - change return type
+	// TODO: - none
 	//
 	//
 	/**
+	 * @return
 	 * @throws Exception
 	 */
-	public static void readSID() throws Exception {
+	public static String readSID() throws Exception {
 
-		if (file_not_empty) {
+		if (checkSIDFile()) {
+			// System.out.println("Success");
 			BufferedReader br = new BufferedReader(new FileReader(file));
-			sid = br.readLine();
+			String sid = br.readLine();
 			br.close();
-			//System.out.println(sid);
-		} else {
-			throw new Exception("File error!");
+			// System.out.println(sid);
+			return sid;
 		}
+		return null;
 	}
-
 }

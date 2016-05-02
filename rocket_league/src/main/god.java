@@ -7,14 +7,15 @@ public class god {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		sidhandler.checkSIDFile();
 		sidhandler.readSID();
+		System.out.println(sidhandler.readSID());
+		String test = sidhandler.readSID();
+		System.out.println(test);
 	}
 
 	//
-	public String requestSessionIDbyUSer() {
-		String SID = "";
-		return SID;
+	public String getSID() throws Exception {
+		return sidhandler.readSID();
 	}
 
 }
